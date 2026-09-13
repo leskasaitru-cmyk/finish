@@ -95,7 +95,7 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     gap: 3rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
 }
 
@@ -141,7 +141,7 @@ body {
     text-align: center;
 }
 
-/* --- Кнопка «Начать» — эффектная --- */
+/* --- Кнопка «Начать» — эффектная, без бегающей полосы --- */
 .btn-primary {
     background: linear-gradient(135deg, #A87FE0 0%, #8A63B8 100%);
     color: #ffffff;
@@ -156,7 +156,6 @@ body {
     transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Светлая подсветка сверху */
 .btn-primary::before {
     content: "";
     position: absolute;
@@ -201,20 +200,26 @@ body {
     transform: translateY(-2px);
 }
 
-/* Пустой квадрат вместо QR-кода со свечением */
+/* --- Блок с QR-кодом --- */
 .hero-square {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 14px;
     flex-shrink: 0;
 }
 
-.empty-square {
-    width: clamp(160px, 15vw, 220px);
-    height: clamp(160px, 15vw, 220px);
+/* Контейнер-рамка вокруг QR */
+.qr-container {
+    width: clamp(180px, 17vw, 240px);
+    height: clamp(180px, 17vw, 240px);
     background-color: #ffffff;
-    border-radius: 12px;
+    border-radius: 20px;
+    padding: 14px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow:
         0 0 15px rgba(158, 123, 199, 0.6),
         0 0 30px rgba(158, 123, 199, 0.4),
@@ -223,40 +228,52 @@ body {
     transition: box-shadow 0.4s ease, transform 0.4s ease;
 }
 
-.empty-square:hover {
+.qr-container:hover {
     box-shadow:
         0 0 20px rgba(158, 123, 199, 0.8),
         0 0 40px rgba(158, 123, 199, 0.6),
         0 0 80px rgba(158, 123, 199, 0.4),
-        0 4px 20px rgba(0, 0, 0, 0.15);
-    transform: scale(1.02);
+        0 6px 22px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px) scale(1.01);
 }
 
+/* Сам QR-код */
+.qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Текст под QR */
 .square-text {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: #4a2c6d;
     text-align: center;
-    max-width: 220px;
+    max-width: 240px;
+    line-height: 1.35;
 }
 
-/* Блок "Что такое индивидуальный проект?" */
+/* --- Блок "Что такое индивидуальный проект?" --- */
 .info-section {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    margin-top: -1rem;
 }
 
 .info-section h2 {
     font-size: clamp(1.5rem, 3vw, 2.2rem);
     font-weight: 700;
     color: #2c2c2c;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     letter-spacing: -0.5px;
 }
 
 .info-section p {
     font-size: clamp(0.95rem, 1.2vw, 1.1rem);
     color: #4a2c6d;
-    line-height: 1.6;
+    line-height: 1.55;
     max-width: 800px;
 }
 
@@ -285,7 +302,6 @@ body {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
-/* Иконка в плашке */
 .card-icon {
     width: 48px;
     height: 48px;
@@ -305,7 +321,6 @@ body {
     display: block;
 }
 
-/* Текстовый блок внутри плашки */
 .home-card .card-text {
     display: flex;
     flex-direction: column;
@@ -359,7 +374,6 @@ body {
     color: #4a2c6d;
 }
 
-/* Сетка карточек */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -367,7 +381,6 @@ body {
     width: 100%;
 }
 
-/* Карточка-«таблетка» (для шаблонов) */
 .card {
     display: flex;
     justify-content: space-between;
@@ -951,6 +964,8 @@ body {
     .hero-text {
         min-width: 100%;
     }
+
+    /* СКРЫВАЕМ QR-КОД НА ТЕЛЕФОНАХ И ПЛАНШЕТАХ */
     .hero-square {
         display: none;
     }
@@ -1150,14 +1165,4 @@ body {
     }
 
     .faq-answer {
-        padding: 0 1.25rem;
-    }
-
-    .faq-item.open .faq-answer {
-        padding: 0 1.25rem 1.25rem 1.25rem;
-    }
-
-    .faq-answer p {
-        font-size: 0.88rem;
-    }
-}
+        padding: 0 
