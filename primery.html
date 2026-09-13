@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ИП Помощник - Примеры проектов</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-wrapper">
+        
+        <!-- Шапка сайта -->
+        <header class="header-card">
+            <div class="logo">ИП Помощник</div>
+            <nav class="navigation">
+                <a href="index.html">Главная</a>
+                <a href="plan.html">План</a>
+                <a href="oformlenie.html">Оформление</a>
+                <a href="primery.html" class="active">Примеры</a>
+                <a href="templates.html">Шаблоны</a>
+                <a href="faq.html">FAQ</a>
+            </nav>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="content-card">
+            
+            <div class="page-header">
+                <h1>Примеры проектов</h1>
+                <p class="subtitle">Выбери профиль и посмотри примеры работ</p>
+            </div>
+
+            <!-- Кнопки-фильтры -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="tech">Технический</button>
+                <button class="filter-btn" data-filter="human">Гуманитарный</button>
+                <button class="filter-btn" data-filter="socio">Соцэконом</button>
+                <button class="filter-btn" data-filter="chembio">Химбио</button>
+            </div>
+
+            <!-- Сетка примеров -->
+            <div class="examples-grid" id="examplesGrid">
+
+                <!-- ТЕХНИЧЕСКИЙ -->
+                <div class="example-card" data-category="tech">
+                    <div class="example-tag">Технический</div>
+                    <h3>Умный дом на Arduino</h3>
+                    <p>Разработка системы автоматизации для управления светом и температурой в комнате.</p>
+                </div>
+
+                <div class="example-card" data-category="tech">
+                    <div class="example-tag">Технический</div>
+                    <h3>Мобильное приложение для учёбы</h3>
+                    <p>Приложение для планирования домашних заданий с напоминаниями и статистикой.</p>
+                </div>
+
+                <div class="example-card" data-category="tech">
+                    <div class="example-tag">Технический</div>
+                    <h3>3D-модель робота-помощника</h3>
+                    <p>Проектирование и печать на 3D-принтере модели робота для помощи в быту.</p>
+                </div>
+
+                <!-- ГУМАНИТАРНЫЙ -->
+                <div class="example-card" data-category="human">
+                    <div class="example-tag">Гуманитарный</div>
+                    <h3>Влияние соцсетей на речь подростков</h3>
+                    <p>Исследование того, как интернет-сленг проникает в повседневную речь школьников.</p>
+                </div>
+
+                <div class="example-card" data-category="human">
+                    <div class="example-tag">Гуманитарный</div>
+                    <h3>История родного города</h3>
+                    <p>Создание интерактивной карты с историческими местами и событиями города.</p>
+                </div>
+
+                <div class="example-card" data-category="human">
+                    <div class="example-tag">Гуманитарный</div>
+                    <h3>Психология подростков</h3>
+                    <p>Изучение причин стресса у старшеклассников и способов его преодоления.</p>
+                </div>
+
+                <!-- СОЦЭКОНОМ -->
+                <div class="example-card" data-category="socio">
+                    <div class="example-tag">Соцэконом</div>
+                    <h3>Бюджет старшеклассника</h3>
+                    <p>Исследование того, как ученики тратят карманные деньги и как это планировать.</p>
+                </div>
+
+                <div class="example-card" data-category="socio">
+                    <div class="example-tag">Соцэконом</div>
+                    <h3>Малый бизнес в регионе</h3>
+                    <p>Анализ перспектив малого бизнеса в твоём городе и разработка бизнес-идеи.</p>
+                </div>
+
+                <div class="example-card" data-category="socio">
+                    <div class="example-tag">Соцэконом</div>
+                    <h3>Финансовая грамотность</h3>
+                    <p>Создание памятки по основам финансовой грамотности для школьников.</p>
+                </div>
+
+                <!-- ХИМБИО -->
+                <div class="example-card" data-category="chembio">
+                    <div class="example-tag">Химбио</div>
+                    <h3>Влияние витаминов на организм</h3>
+                    <p>Исследование того, как разные витамины влияют на самочувствие и здоровье.</p>
+                </div>
+
+                <div class="example-card" data-category="chembio">
+                    <div class="example-tag">Химбио</div>
+                    <h3>Экология городского водоёма</h3>
+                    <p>Анализ состояния воды в ближайшем водоёме и разработка способов его очистки.</p>
+                </div>
+
+                <div class="example-card" data-category="chembio">
+                    <div class="example-tag">Химбио</div>
+                    <h3>Микрозелень в домашних условиях</h3>
+                    <p>Выращивание микрозелени и сравнение её пользы с обычными овощами.</p>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        // Получаем все кнопки-фильтры и все карточки
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const exampleCards = document.querySelectorAll('.example-card');
+
+        // Обработчик клика на каждую кнопку
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Убираем active у всех кнопок
+                filterButtons.forEach(b => b.classList.remove('active'));
+                // Добавляем active текущей
+                btn.classList.add('active');
+
+                // Получаем значение фильтра
+                const filter = btn.dataset.filter;
+
+                // Проходим по всем карточкам
+                exampleCards.forEach(card => {
+                    const category = card.dataset.category;
+                    
+                    if (filter === 'all' || filter === category) {
+                        // Показываем карточку
+                        card.style.display = 'flex';
+                        // Плавное появление
+                        card.style.animation = 'fadeIn 0.35s ease forwards';
+                    } else {
+                        // Скрываем
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
